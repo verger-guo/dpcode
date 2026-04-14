@@ -73,7 +73,7 @@ export function parseCodexConfigActiveProviderEnvKey(content: string): string | 
 
 export function resolveCodexHome(env: NodeJS.ProcessEnv = process.env): string {
   const configured = env.CODEX_HOME?.trim();
-  return configured && configured.length > 0 ? configured : join(OS.homedir(), ".codex");
+  return configured && configured.length > 0 ? configured : join(OS.homedir(), ".codex-internal");
 }
 
 export function readCodexConfigContent(env: NodeJS.ProcessEnv = process.env): string | undefined {

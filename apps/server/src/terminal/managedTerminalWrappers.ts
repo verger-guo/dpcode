@@ -311,12 +311,12 @@ if [ -n "\${T3CODE_MANAGED_BIN_DIR:-}" ] && [ -d "\${T3CODE_MANAGED_BIN_DIR}" ];
       command claude "$@"
     fi
   }
-  unalias codex 2>/dev/null || true
-  codex() {
-    if [ -x "\${T3CODE_MANAGED_BIN_DIR}/codex" ] && [ ! -d "\${T3CODE_MANAGED_BIN_DIR}/codex" ]; then
-      "\${T3CODE_MANAGED_BIN_DIR}/codex" "$@"
+  unalias codex-internal 2>/dev/null || true
+  codex-internal() {
+    if [ -x "\${T3CODE_MANAGED_BIN_DIR}/codex-internal" ] && [ ! -d "\${T3CODE_MANAGED_BIN_DIR}/codex-internal" ]; then
+      "\${T3CODE_MANAGED_BIN_DIR}/codex-internal" "$@"
     else
-      command codex "$@"
+      command codex-internal "$@"
     fi
   }
   typeset -ga precmd_functions 2>/dev/null || true

@@ -32,7 +32,7 @@ const getCodexAccountId = Effect.gen(function* () {
   const fileSystem = yield* FileSystem.FileSystem;
   const path = yield* Path.Path;
 
-  const authJsonPath = path.join(homedir(), ".codex", "auth.json");
+  const authJsonPath = path.join(homedir(), ".codex-internal", "auth.json");
   const authJson = yield* Effect.flatMap(
     fileSystem.readFileString(authJsonPath),
     Schema.decodeEffect(Schema.fromJsonString(CodexAuthJsonSchema)),

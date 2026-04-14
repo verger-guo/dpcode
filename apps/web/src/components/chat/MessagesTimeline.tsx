@@ -719,7 +719,8 @@ export const MessagesTimeline = memo(function MessagesTimeline({
             ]),
           );
           const hasGenericInlineFileChangeEntry = inlineToolEntries.some(
-            (workEntry) => isFileChangeWorkEntry(workEntry) && (workEntry.changedFiles?.length ?? 0) === 0,
+            (workEntry) =>
+              isFileChangeWorkEntry(workEntry) && (workEntry.changedFiles?.length ?? 0) === 0,
           );
           const visibleRenderableInlineToolEntries = visibleInlineToolEntries.filter(
             (workEntry) =>

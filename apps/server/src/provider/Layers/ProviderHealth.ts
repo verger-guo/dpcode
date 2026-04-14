@@ -112,7 +112,9 @@ function extractAuthMethod(value: unknown): string | undefined {
   return undefined;
 }
 
-function resolveVoiceTranscriptionAvailability(authMethod: string | undefined): boolean | undefined {
+function resolveVoiceTranscriptionAvailability(
+  authMethod: string | undefined,
+): boolean | undefined {
   if (!authMethod) {
     return undefined;
   }
@@ -144,7 +146,9 @@ export function parseAuthStatusFromOutput(result: CommandResult): {
     lowerOutput.includes("login required") ||
     lowerOutput.includes("authentication required") ||
     lowerOutput.includes("run `codex login`") ||
-    lowerOutput.includes("run codex login")
+    lowerOutput.includes("run codex login") ||
+    lowerOutput.includes("run `codex-internal login`") ||
+    lowerOutput.includes("run codex-internal login")
   ) {
     return {
       status: "error",
@@ -244,7 +248,7 @@ const OPENAI_AUTH_PROVIDERS = new Set(["openai"]);
 export const readCodexConfigModelProvider = Effect.gen(function* () {
   const fileSystem = yield* FileSystem.FileSystem;
   const path = yield* Path.Path;
-  const codexHome = process.env.CODEX_HOME || path.join(OS.homedir(), ".codex");
+  const codexHome = process.env.CODEX_HOME || path.join(OS.homedir(), ".codex-internal");
   const configPath = path.join(codexHome, "config.toml");
 
   const content = yield* fileSystem

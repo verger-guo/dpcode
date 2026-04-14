@@ -111,7 +111,7 @@ const INSTALL_PROVIDER_SETTINGS: readonly InstallProviderSettings[] = [
     binaryPlaceholder: "Codex binary path",
     binaryDescription: (
       <>
-        Leave blank to use <code>codex</code> from your PATH.
+        Leave blank to use <code>codex-internal</code> from your PATH.
       </>
     ),
     homePathKey: "codexHomePath",

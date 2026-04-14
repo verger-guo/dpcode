@@ -12,7 +12,7 @@ export type TerminalAgentHookEventType = "Start" | "Stop" | "PermissionRequest";
 export const T3CODE_TERMINAL_CLI_KIND_ENV_KEY = "T3CODE_TERMINAL_CLI_KIND";
 export const T3CODE_TERMINAL_HOOK_OSC_PREFIX = "633;T3CODE_AGENT_EVENT=";
 export const MANAGED_TERMINAL_COMMAND_NAME_BY_CLI_KIND: Record<TerminalCliKind, string> = {
-  codex: "codex",
+  codex: "codex-internal",
   claude: "claude",
 };
 
@@ -41,7 +41,7 @@ const MAX_TERMINAL_INPUT_BUFFER_LENGTH = 512;
 const MAX_TERMINAL_TITLE_LENGTH = 48;
 
 const WRAPPER_COMMANDS = new Set(["builtin", "command", "env", "noglob", "nocorrect", "sudo"]);
-const CODEX_COMMAND_NAMES = new Set(["codex", "codex-cli"]);
+const CODEX_COMMAND_NAMES = new Set(["codex-internal"]);
 const CLAUDE_COMMAND_NAMES = new Set(["claude", "claude-code", "claude_code"]);
 const OUTPUT_CODEX_TEXT_PATTERNS = [/\bopenai codex\b(?:\s*\(|\s+v)/i, /\bcodex cli\b/i];
 const OUTPUT_CLAUDE_TEXT_PATTERNS = [/\bclaude code\b(?:\s+v\d|\s*$)/i];

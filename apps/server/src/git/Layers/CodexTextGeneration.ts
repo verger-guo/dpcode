@@ -235,7 +235,7 @@ const makeCodexTextGeneration = Effect.gen(function* () {
 
       const runCodexCommand = Effect.gen(function* () {
         const command = ChildProcess.make(
-          "codex",
+          "codex-internal",
           [
             "exec",
             "--ephemeral",

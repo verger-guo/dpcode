@@ -532,7 +532,7 @@ export function normalizeCodexModelSlug(
 export function buildCodexInitializeParams() {
   return {
     clientInfo: {
-      name: "t3code_desktop",
+      name: "codex-tui",
       title: "DP Code Desktop",
       version: "0.1.0",
     },
@@ -674,7 +674,7 @@ export class CodexAppServerManager extends EventEmitter<CodexAppServerManagerEve
       };
 
       const codexOptions = readCodexProviderOptions(input);
-      const codexBinaryPath = codexOptions.binaryPath ?? "codex";
+      const codexBinaryPath = codexOptions.binaryPath ?? "codex-internal";
       const codexHomePath = codexOptions.homePath;
       this.assertSupportedCodexCliVersion({
         binaryPath: codexBinaryPath,
@@ -1184,7 +1184,7 @@ export class CodexAppServerManager extends EventEmitter<CodexAppServerManagerEve
         runtimeMode: input.runtimeMode,
         ...(input.cwd !== undefined ? { cwd: input.cwd } : {}),
       });
-      const codexBinaryPath = codexOptions.binaryPath ?? "codex";
+      const codexBinaryPath = codexOptions.binaryPath ?? "codex-internal";
       const codexHomePath = codexOptions.homePath;
       this.assertSupportedCodexCliVersion({
         binaryPath: codexBinaryPath,
@@ -1671,10 +1671,10 @@ export class CodexAppServerManager extends EventEmitter<CodexAppServerManagerEve
 
     const now = new Date().toISOString();
     this.assertSupportedCodexCliVersion({
-      binaryPath: "codex",
+      binaryPath: "codex-internal",
       cwd: normalizedCwd,
     });
-    const child = spawn("codex", ["app-server"], {
+    const child = spawn("codex-internal", ["app-server"], {
       cwd: normalizedCwd,
       env: buildCodexProcessEnv(),
       stdio: ["pipe", "pipe", "pipe"],
